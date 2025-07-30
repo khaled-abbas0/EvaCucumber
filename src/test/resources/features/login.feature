@@ -9,4 +9,4 @@ Feature: Eva Pharma Assessment Test
     And I add a new admin user
     Then the number of records should increase by 1
     When I search for the admin user and delete the new user
-    Then the number of records should decrease by 1
+   Then the number of records should decrease by 1

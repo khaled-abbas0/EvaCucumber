@@ -12,8 +12,11 @@ import org.testng.Assert;
 
 public class AdminSteps {
 
-    WebDriver driver = DriverManager.getDriver();  
+    WebDriver driver = DriverManager.getDriver();
     AdminPage AdminPageObj;
+    int numberBeforeAddingUser;
+    int numberAfterAddingUser;
+    int numberAfterDeletingUser;
 
     @When("I navigate to the Admin page")
     public void iNavigateToTheAdminPage() {
@@ -25,20 +28,22 @@ public class AdminSteps {
     @When ("I get the current number of admin records")
     public void iGetTheCurrentNumberOfAdminRecords() {
         AdminPageObj = new AdminPage(driver);
-        AdminPageObj.GetNumberOfRecord();
+        numberBeforeAddingUser =  AdminPageObj.GetNumberOfRecord();
     }
 
     @And("I press add button")
     public void iAddANewAdminUser() {
         AdminPageObj = new AdminPage(driver);
         AdminPageObj.ClickAddButton();
+
     }
 
     @Then("the number of records should increase by 1")
     public void theNumberOfRecordsShouldIncreaseBy(){
         AdminPageObj = new AdminPage(driver);
-        int NumberOfRecord = AdminPageObj.GetNumberOfRecord();
-        Assert.assertEquals(NumberOfRecord,NumberOfRecord+1);
+        numberAfterAddingUser = AdminPageObj.GetNumberOfRecord();
+        Assert.assertEquals(numberBeforeAddingUser+1,numberAfterAddingUser);
+        System.out.print(numberAfterAddingUser);
 
     }
 
@@ -57,8 +62,8 @@ public class AdminSteps {
     @Then("the number of records should decrease by 1")
     public void theNumberOfRecordsShouldDecreaseBy() {
         AdminPageObj = new AdminPage(driver);
-        int NumberOfRecord = AdminPageObj.GetNumberOfRecord();
-        Assert.assertEquals(NumberOfRecord,NumberOfRecord-1);
+        numberAfterDeletingUser = AdminPageObj.GetNumberOfRecord();
+        Assert.assertEquals(numberAfterDeletingUser,numberAfterAddingUser-1);
     }
 }
 
