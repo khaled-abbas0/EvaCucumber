@@ -13,6 +13,6 @@ public class Hooks {
 
     @After
     public void tearDown() {
-//        DriverManager.quitDriver();  // Clean up AFTER scenario
+        DriverManager.quitDriver();
     }
 }

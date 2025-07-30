@@ -43,7 +43,6 @@ public class AdminSteps {
         AdminPageObj = new AdminPage(driver);
         numberAfterAddingUser = AdminPageObj.GetNumberOfRecord();
         Assert.assertEquals(numberBeforeAddingUser+1,numberAfterAddingUser);
-        System.out.print(numberAfterAddingUser);
 
     }
 
