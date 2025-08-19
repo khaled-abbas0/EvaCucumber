@@ -1,29 +1,18 @@
 package stepDefinitions;
 
-import Pages.Login;
 import Utilities.DriverManager;
+import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
-import io.cucumber.java.en.*;
-public class LoginSteps {
+import Pages.Login;
 
+public class LoginSteps {
     WebDriver driver = DriverManager.getDriver();
     Login loginObj;
 
-    @Given("I login as an Admin with username and password")
-    public void iLoginAsAnAdminWithUsernameAndPassword() {
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+    @Given("I am logged in as a doctor with email {string} and password {string}")
+    public void iAmLoggedInAsADoctorWithEmailAndPassword(String Email, String Password) {
+        driver.get("https://limitlesscaredoctorportal-staging.azurewebsites.net/auth/login");
         loginObj = new Login(driver);
-        loginObj.UserLogin();
+        loginObj.UserLogin(Email,Password);
     }
-
-
-    @Then("verify that user is logged")
-    public void verifyThatUserIsLogged() throws InterruptedException {
-        loginObj = new Login(driver);
-        loginObj.UserLoginVerify();
-
-    }
-
-
-
 }

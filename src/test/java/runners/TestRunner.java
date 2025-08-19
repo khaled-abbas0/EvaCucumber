@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @CucumberOptions(
 
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/CreateRx.feature",
 
         glue = {"stepDefinitions"},
 
